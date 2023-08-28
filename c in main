@@ -1,0 +1,311 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+
+
+void activateHeater1() {
+    // Isıtıcıları aktive etmek 
+    
+}
+
+void activateHeater2() {
+    // Isıtıcıları aktive etmek 
+    
+}
+
+void activateHeater3() {
+    // Isıtıcıları aktive etmek 
+    
+}
+
+void deactivateHeater1() {
+    // Isıtıcıları deaktive etmek
+    
+}
+
+void deactivateHeater2() {
+    // Isıtıcıları deaktive etmek
+    
+}
+
+void deactivateHeater3() {
+    // Isıtıcıları deaktive etmek
+    
+}
+
+void activateCompressor1() {
+    // Kompresörleri aktive etmek 
+    
+}
+void activateCompressor2() {
+    // Kompresörleri aktive etmek 
+    
+}
+
+void deactivateCompressor1() {
+    // Kompresörleri deaktive etmek
+    
+}
+
+void deactivateCompressor2() {
+    // Kompresörleri deaktive etmek
+    
+}
+
+void activateFans() {
+    // Fanları aktive etmek
+    
+}
+
+void deactivateFans() {
+    // Fanları deaktive etmek 
+    
+}
+
+void activateCondenser() {
+    // Kondenser'i aktive etmek
+    
+}
+
+void deactivateCondenser() {
+    // Kondenser'i deaktive etmek 
+    
+}
+
+
+
+
+
+double measureIndoorTemperature() {
+    // İç sıcaklığı ölçüp değer döndürme 
+}
+
+double measureOutdoorTemperature() {
+    // Dış sıcaklığı ölçüp değer döndürme
+}
+
+
+bool readPressureSensor() {
+    // Basınç sensörü okuma ve değer dndürme
+      return true;
+      
+}
+
+
+int main() {
+    
+    int selectMode;
+    printf("Choose the mode for air conditioner (1=reduced mode - 2=emergency!! - 3- - 4=AUTO\n");
+    scanf("%d",&selectMode);
+    
+    
+    
+    
+     char pressureSensorStatus[2];
+        printf("Basınç sensörü durumunu giriniz (* veya ?): ");
+        scanf("%1s", pressureSensorStatus);
+    
+    
+    
+     if (pressureSensorStatus[0] == '*') {
+                        activateCondenser();
+                    }
+    
+    
+    
+    
+    
+  
+    while (true) {
+        double indoorTemperature = measureIndoorTemperature();
+        double outdoorTemperature = measureOutdoorTemperature();
+        bool pressureSensorStatus = readPressureSensor();
+
+        // sıcaklık hesabı 
+        if (outdoorTemperature < 19) {
+            indoorTemperature = 19;
+            Tic=19;
+        } else if (outdoorTemperature > 40) {
+            indoorTemperature = 40;
+            Tic=40;
+        } else {
+            indoorTemperature = (outdoorTemperature - 10) * 0.4 + 19;
+            Tic=indoorTemperature;
+        }
+        
+
+         double Tset,Tret=indoorTemperature,Tic;
+         Tset=Tic-outdoor temperature;
+         
+
+           switch (selectMode)
+           {
+           	
+           	case 1: 
+			   printf("you chose reduced mode");
+			 
+			   
+			   
+           	   break;
+           	   
+           	   
+           	case 2:
+			   printf("you chose emergency mode"); 
+			    
+			    	
+		
+			   break;
+			   
+			   
+			case 3:
+			    printf("you chose third mode");
+			    
+			     	
+			     
+				break;
+				
+				 
+			case 4:
+				  printf("you chose AUTO mode");
+				 activateFans();
+				 
+				 
+             if((Tset + 0,5) < Tret){
+             	deactivateheater1();
+             	deactivateheater2();
+             	deactivateheater3();
+             	
+			 } 
+			 else if((Tset + 1,0) < Tret <= (Tset + 0,5)) {
+			 	deactivateheater1();
+             	deactivateheater2();
+             	activateheater3();
+			 }
+			 else if((Tset + 1,5) < Tret <= (Tset + 1,0)){
+			 	deactivateheater1();
+             	activateheater2();
+             	deactivateheater3();
+			 }
+			 else if((Tset + 2,0) < Tret <= (Tset + 1,5)){
+			 	deactivateheater1();
+             	activateheater2();
+             	activateheater3();
+			 	
+			 }
+			 else if((Tset + 2,5) < Tret <= (Tset + 2,0)){
+			 	activateheater1();
+             	deactivateheater2();
+             	deactivateheater3();
+			 }
+			 else if((Tset + 3,0) < Tret <= (Tset + 2,5)){
+			 	activateheater1();
+             	deactivateheater2();
+             	activateheater3();
+			 }
+			 else if((Tset + 3,5) < Tret <= (Tset + 3,0)){
+			 	activateheater1();
+             	activateheater2();
+             	deactivateheater3();
+			 }
+			 else if( Tret <= (Tset + 3,5)){
+			 	activateheater1();
+             	activateheater2();
+             	activateheater3();
+			 }
+        
+        
+             
+             if((Tset) > Tret >= (Tset - 0,5)){
+             	deactivateCompressor1();
+             	deactivateCompressor2();
+             		
+			 }
+			 else if((Tset + 0,5) > Tret >= (Tset)){
+	        	deactivateCompressor1();
+             	deactivateCompressor2();
+			 }  
+			 else if((Tset + 1,0) > Tret >= (Tset + 0,5)){
+			 	activateCompressor1();
+             	deactivateCompressor2();
+			 }  
+			 else if((Tset + 1,5) > Tret >= (Tset + 1,0)){
+			 	activateCompressor1();
+             	deactivateCompressor2();
+			 }
+			 else if((Tset + 2,0) > Tret >= (Tset + 1,5)){
+			 	activateCompressor1();
+             	deactivateCompressor2();
+			 } 
+			 else if((Tset + 2,5) > Tret >= (Tset + 2,0)){
+			 	activateCompressor1();
+             	deactivateCompressor2();
+			 }
+			 else if((Tset + 3,0) > Tret >= (Tset + 2,5)){
+			 	activateCompressor1();
+             	activateCompressor2();
+			 }
+			 else if((Tset + 3,5) > Tret >= (Tset + 3,0)){
+			 	activateCompressor1();
+             	activateCompressor2();
+			 }
+			 else if((Tset + 4,0) > Tret >= (Tset + 3,5) ){
+			 	activateCompressor1();
+             	activateCompressor2();
+			 }
+			 else if(Tret >= (Tset + 4)){
+			 	activateCompressor1();
+             	activateCompressor2();
+			 }
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 }           
+             
+             
+             
+             
+             
+             
+             
+             
+             
+        
+        
+        
+        }
+        
+      
+				  	
+				  	
+				  	
+}
+        
+				  		  
+        printf("Indoor Temperature: %.2f, Outdoor Temperature: %.2f\n", indoorTemperature, outdoorTemperature);
+    }
+           	
+		   }
+	 
+          
+          return 0;
+
+}
